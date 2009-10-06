@@ -3,14 +3,12 @@ TARGET = lua
 PSP_EBOOT_ICON = resources/ICON0.png
 PSP_EBOOT_PIC1 = resources/PIC1.png
 
-LUA_OBJS = 			src/luaPlayer.o src/utility.o src/luaMath.o \
+LUA_OBJS = 			src/luaPlayer.o src/utility.o \
 					src/luaControls.o src/luaGraphics.o src/luaSound.o \
 					src/lua3d.o src/luaTimer.o src/luaSystem.o src/luaWlan.o \
 					src/luaAdhoc.o
 				
 ADHOC_OBJS = 		src/libs/adhoc/adhoc.o
-
-VFPU_OBJS = 		src/libs/vfpu/vfpu.o 
 			
 AUDIO_OBJS = 		src/libs/aalib/pspaalib.o src/libs/aalib/pspaalibwav.o \
 			 		src/libs/aalib/pspaalibscemp3.o src/libs/aalib/pspaalibogg.o \
@@ -18,13 +16,15 @@ AUDIO_OBJS = 		src/libs/aalib/pspaalib.o src/libs/aalib/pspaalibwav.o \
 			
 GRAPHICS_OBJS = 	src/libs/vram/vram.o \
 					src/libs/graphics/graphics.o src/libs/graphics/framebuffer.o
+					
+TILEMAP_OBJS =      src/libs/tileEngine/map.o src/libs/tileEngine/collision.o
 				
 INTRAFONT_OBJS = 	src/libs/intraFont/libccc.o src/libs/intraFont/intraFont.o \
 					src/pspDveManager.o
 					
 SCE_OBJS =			src/libs/sce/msgDialog.o src/libs/sce/osk.o src/libs/sce/browser.o
 
-OBJS =	$(LUA_OBJS) $(ADHOC_OBJS) $(VFPU_OBJS) $(AUDIO_OBJS) $(GRAPHICS_OBJS) $(INTRAFONT_OBJS) $(SCE_OBJS) src/main.o 
+OBJS =	$(LUA_OBJS) $(ADHOC_OBJS) $(VFPU_OBJS) $(AUDIO_OBJS) $(GRAPHICS_OBJS) $(TILEMAP_OBJS) $(INTRAFONT_OBJS) $(SCE_OBJS) src/main.o 
 
 CFLAGS = -O3 -frename-registers -ffast-math -fomit-frame-pointer -G0 -Wall -g
 CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti

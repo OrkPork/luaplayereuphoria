@@ -125,6 +125,11 @@ static int lua_IntraFontLoad(lua_State *L)
 	
 	font = intraFontLoad(userFont, 0);
 	
+	if (intraFontLoad(userFont, 0) == 0)
+	{
+		return luaL_error(L, "Could not load Font, please check your path, and ensure the file exists");
+	}
+	
 	return 1;
 }
 
@@ -132,9 +137,9 @@ static int lua_IntraFontLoad(lua_State *L)
 static int lua_IntraFontPrint(lua_State *L)
 {
 	int argc = lua_gettop(L);
-	if (argc !=1 && argc != 2 && argc != 3 && argc != 4 && argc != 5 && argc != 6)
+	if (argc !=1 && argc != 2 && argc != 3 && argc != 4 && argc != 5 && argc != 6 && argc != 7)
 	{	
-		//return luaL_error(L, "IntraFont.print() takes 7 arguments : font, x, y, textSize, foreGround color, backGroundColor text");
+		return luaL_error(L, "IntraFont.print() takes 7 arguments : font, x, y, textSize, foreGround color, backGroundColor, text");
 	}
 
 	const char *path = luaL_checkstring(L, 1);

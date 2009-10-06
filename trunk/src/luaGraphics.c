@@ -362,7 +362,7 @@ static int lua_ImageBlit(lua_State *L)
 	}
 	
 	bool rect = (argc == 9 || argc == 10);
-	bool alpha = (argc == 4 || argc == 5);
+	bool alpha = (argc == 5);
 	int setAlpha = alpha? luaL_checkint(L, 4) : 255;
 	int sx = rect? luaL_checkint(L, 5) : 0;
 	int sy = rect? luaL_checkint(L, 6) : 0;
